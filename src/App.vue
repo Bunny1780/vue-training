@@ -1,21 +1,28 @@
 <script setup>
-    const message = "Hello Vue";
-    const messageHtml = "<u>Hello Vue</u>";
-    const name = "content"
-    const check = false
+    const level = 3
+    const arrays = ["HTML", "CSS", "JavaScript", "Vue.js"]
+    const obj = {html: "HTML", css: "CSS", javascript: "JavaScript", vue: "Vue.js"}
 </script>
 
 <template>
     <nav>基本的導覽列</nav>
-    <div>{{ message }}</div> <!-- 插入變數 -->
-    <div v-html="messageHtml"></div> <!-- 插入html -->
-    <div>{{ message.toUpperCase() }}</div> <!-- 插入程式語句 -->
-    <div v-bind:class="name">插入屬性</div> <!-- 插入屬性 -->
-    <div :class="check?'dark':'light'">插入屬性使用三元運算</div>
+    <main>
+        <div v-if="level === 3">大神</div>
+        <div v-else-if="level === 2">資深</div>
+        <div v-else-if="level === 1">菜鳥</div>
+        <div v-else>零基礎</div>
+        <ul>
+            <li v-for="arr in arrays">{{ arr }}</li>
+        </ul>
+        <ul>
+            <li v-for="(arr, index) in arrays">{{ index }} - {{ arr }}</li>
+        </ul>
+        <ul>
+            <li v-for="(value, key) in obj">{{ key }} : {{ value }}</li>
+        </ul>
+    </main>
 </template>
 
 <style scoped>
     main { background: #999; }
-    .dark { color: #333; }
-    .light { color: #c9c9c9; }
 </style>
