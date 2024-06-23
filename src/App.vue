@@ -1,18 +1,17 @@
 <script setup>
+    import {ref} from "vue";
+    let title = ref("網站標題")
     const handler = function() {
         console.log("click")
-    }
-    const mouseover = function() {
-        console.log("mouseover")
+        title.value = "新的網站標題"
     }
 </script>
 
 <template>
     <nav>基本的導覽列</nav>
     <main>
-        <button v-on:click="handler">按鈕</button>
-        <button @click.once="handler" @mouseover="mouseover">按鈕</button>
-        <a @click.prevent="handler" href="https://diswork.cc">Diswork</a>
+        <h1>{{ title }}</h1>
+        <button @click="handler">按鈕</button>
     </main>
 </template>
 
