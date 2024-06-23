@@ -1,25 +1,18 @@
 <script setup>
-    const level = 3
-    const arrays = ["HTML", "CSS", "JavaScript", "Vue.js"]
-    const obj = {html: "HTML", css: "CSS", javascript: "JavaScript", vue: "Vue.js"}
+    const handler = function() {
+        console.log("click")
+    }
+    const mouseover = function() {
+        console.log("mouseover")
+    }
 </script>
 
 <template>
     <nav>基本的導覽列</nav>
     <main>
-        <div v-if="level === 3">大神</div>
-        <div v-else-if="level === 2">資深</div>
-        <div v-else-if="level === 1">菜鳥</div>
-        <div v-else>零基礎</div>
-        <ul>
-            <li v-for="arr in arrays">{{ arr }}</li>
-        </ul>
-        <ul>
-            <li v-for="(arr, index) in arrays">{{ index }} - {{ arr }}</li>
-        </ul>
-        <ul>
-            <li v-for="(value, key) in obj">{{ key }} : {{ value }}</li>
-        </ul>
+        <button v-on:click="handler">按鈕</button>
+        <button @click.once="handler" @mouseover="mouseover">按鈕</button>
+        <a @click.prevent="handler" href="https://diswork.cc">Diswork</a>
     </main>
 </template>
 
