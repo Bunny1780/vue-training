@@ -1,29 +1,21 @@
 <script setup>
-    import {onMounted, onUnmounted, ref} from "vue";
+    import {onMounted, ref} from "vue";
+    import List from "./List.vue";
+    let products = ref(null)
 
-    onMounted(function() {
-        console.log("onMounted")
+    onMounted(async() => {
+        let response = await fetch("https://cwpeng.github.io/live-records-samples/data/products.json");
+        let list = await response.json();
+        products.value = list;
     })
-    let schedule;
-    onUnmounted(function() {
-        window.clearInterval(schedule)
-        console.log("onUnmounted")
-    })
-    let text = ref("Main Text");
-    let update = function() {
-        text.value = "Change Text";
-    }
-    let count = ref(0)
-    schedule = window.setInterval(function() {
-        count.value += 1
-        console.log("+1");
-    }, 1000)
+
 </script>
 
 <template>
     <main>
-        <div>{{ text }}</div>
-        <button @click="update">change text</button>
+        <div>Products List</div>
+        <div v-if="products === null">Loding...</div>
+        <List v-else :products="products"></List>
     </main>
 </template>
 
