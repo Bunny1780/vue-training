@@ -1,19 +1,23 @@
 <script setup>
-    import {onMounted, onUpdated, onUnmounted, ref} from "vue";
+    import {onMounted, onUnmounted, ref} from "vue";
 
     onMounted(function() {
         console.log("onMounted")
     })
-    onUpdated(function() {
-        console.log("onUpdate")
-    })
+    let schedule;
     onUnmounted(function() {
+        window.clearInterval(schedule)
         console.log("onUnmounted")
     })
     let text = ref("Main Text");
     let update = function() {
         text.value = "Change Text";
     }
+    let count = ref(0)
+    schedule = window.setInterval(function() {
+        count.value += 1
+        console.log("+1");
+    }, 1000)
 </script>
 
 <template>
