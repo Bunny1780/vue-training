@@ -1,8 +1,12 @@
 <script setup>
+defineProps(['title', 'subtitle'])
 </script>
 
 <template>
-    <nav>基本的導覽列</nav>
+    <nav>
+        <div>{{ title }}</div>
+        <div>{{ subtitle }}</div>
+    </nav>
 </template>
 
 <style scoped>

@@ -2,22 +2,20 @@
     import Nav from "./Nav.vue";
     import Main from "./Main.vue";
     import { ref } from "vue";
-
-    // 標準事件處理
-    let text = ref("測試文字");
-    let change = function() {
-        text.value = "修改文字"
+    // 自訂事件處理二
+    let subtitle = ref("這是副標題");
+    let updatesubtitle = function() {
+        subtitle.value = "這是新的副標題"
     }
 </script>
 
 <template>
-    <Nav></Nav>
-    <!-- <Main></Main> -->
-    <Main @Myevent="change"></Main> <!-- 自訂事件處理 -->
+    <Nav
+        title="這是主標題"
+        :subtitle="subtitle"
+    ></Nav>
+    <Main @update="updatesubtitle"></Main> 
     <div>{{ text }}</div>
-
-    <!-- 標準事件處理 -->
-    <!-- <button @click="change">按鈕</button> -->
 </template>
 
 <style scoped>
