@@ -3,11 +3,11 @@ defineProps(["products"])
 </script>
 
 <template>
-    <div v-for="product in products">
-        <h3>{{ product.name }}</h3>
-        <p>{{ product.price }}</p>
-        <p>{{ product.description }}</p>
-    </div>
+    <ul v-for="product in products">
+        <li>Name : {{ product.name }}</li>
+        <li>Price : {{ product.price }}</li>
+        <li>Note : {{ product.description }}</li>
+    </ul>
 </template>
 
 <style scoped>
