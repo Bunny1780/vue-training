@@ -6,6 +6,7 @@
 <template>
     <h1>{{ message }}</h1>
     <input v-model="message">
+    <h2>Test</h2>
 </template>
 
 <style scoped>
